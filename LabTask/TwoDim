@@ -1,1 +1,39 @@
+import java.util.Scanner;
+public class TwoDim {
 
+    public static void main(String[] args) {
+        String[][] fruits = {{"Apple", "Orange"},
+                            {"Mango"},{"Banana"}};
+        
+        String vegetables[] = {"Okra", "Eggplant", "Asperagus"};
+        String cannedGoods[] = {"San Marino", "Saba"};
+        
+        String grocery[][] = {vegetables, cannedGoods};
+
+        for (int r= 0;r < fruits.length; r++) {
+            for (int c = 0; c < fruits[r].length; c++) {
+                System.out.println("fruits:[" +r+ "][" +c+ "] = " + fruits[r][c]);
+            }
+        }
+
+        for (int r = 0; r < grocery.length; r++) {
+            for (int c = 0; c < grocery[r].length; c++) {
+                System.out.println("grocery:[" +r+ "][" +c+ "]= " + grocery[r][c]);
+                
+            }
+        }
+        for (String v : vegetables) {
+            System.out.println(v);
+        }
+        for (String c : cannedGoods) {
+            System.out.println(c);
+        }
+        System.out.println("Enter new fruits: ");
+        Scanner input = new Scanner(System.in);
+        for (int r = 0; r < fruits.length; r++) {
+            for (int c = 0; c < fruits[r].length; c++) {
+                fruits[r][c] = input.nextLine();
+            }
+        }
+    }
+}
