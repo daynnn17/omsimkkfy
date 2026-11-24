@@ -1,0 +1,42 @@
+import java.util.Scanner;
+public class GradeCalculator {
+   static final int SECTIONS = 2;
+   static final int STUDENTS = 3;
+   static final String[] SUBJECTS = {"Java", "Database", "Networking"};
+   public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       double[][] studentAvg = new double[SECTIONS][STUDENTS];
+       int[][][] grades = new int[SECTIONS][STUDENTS][SUBJECTS.length];
+       // Input
+       for (int s = 0; s < SECTIONS; s++) {
+           System.out.println("Section " + (s + 1));
+           for (int st = 0; st < STUDENTS; st++) {
+               System.out.println("  Student " + (st + 1));
+               int sum = 0;
+               for (int sub = 0; sub < SUBJECTS.length; sub++) {
+                   System.out.print("    " + SUBJECTS[sub] + ": ");
+                   grades[s][st][sub] = sc.nextInt();
+                   sum += grades[s][st][sub];
+               }
+               studentAvg[s][st] = (double) sum / SUBJECTS.length;
+           }
+       }
+       // Output
+       System.out.println();
+       for (int s = 0; s < SECTIONS; s++) {
+           System.out.println("SECTION " + (s + 1));
+           System.out.println("--------------------------");
+           double sectionTotal = 0;
+           for (int st = 0; st < STUDENTS; st++) {
+               System.out.println();
+               System.out.println("Student " + (st + 1));
+               for (int sub = 0; sub < SUBJECTS.length; sub++) {
+                   System.out.println(SUBJECTS[sub] + ": " + grades[s][st][sub]);
+               }
+               System.out.printf("Student Average: %.2f%n", studentAvg[s][st]);
+               sectionTotal += studentAvg[s][st];
+           }
+           System.out.printf("Section Average: %.2f%n%n", sectionTotal / STUDENTS);
+       }
+       sc.close();
+   }
